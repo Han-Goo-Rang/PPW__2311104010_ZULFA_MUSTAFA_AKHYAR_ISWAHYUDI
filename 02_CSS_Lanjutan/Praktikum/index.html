@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unwritten - Lightfantasy Outfit</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="app.css" />
+</head>
+<body class="bg-gray-100">
+
+  <!-- Header Section (pink + white h1) -->
+  <header class="site-header shadow-sm">
+    <div class="px-4 md:px-8 py-3 bg-pink-400 text-white">
+      <h1 class="text-xl font-bold">Unwritten - Lightfantasy Outfit</h1>
+    </div>
+  </header>
+
+  <!-- NAV BAR TERPISAH (tidak menyatu dengan header) -->
+  <nav class="nav-bar ">
+    <div class="glass--nav px-4 py-2">
+      <ul class="flex justify-end items-center space-x-6 text-gray-700 font-medium">
+        <li><a href="#" class="hover:text-pink-500 transition duration-300">Beranda</a></li>
+        <li><a href="#" class="hover:text-pink-500 transition duration-300">Produk</a></li>
+        <li><a href="#" class="hover:text-pink-500 transition duration-300">Member</a></li>
+        <li><a href="#" class="hover:text-pink-500 transition duration-300">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content Section -->
+  <main class="container mx-auto p-4 md:p-8">
+   <!-- Banner Section (Auto Slide tanpa JS) -->
+<section class="mb-8 rounded-lg overflow-hidden">
+  <div class="relative h-64 md:h-80 bg-gray-200 banner-slider">
+    <div class="banner-track">
+      <div class="banner-slide">
+        <img src="assets/images/Banner.png" alt="Banner 1" />
+      </div>
+      <div class="banner-slide">
+        <img src="assets/images/Banner2.jpg" alt="Banner 2" />
+      </div>
+      <div class="banner-slide">
+        <img src="assets/images/Banner3.jpg" alt="Banner 3" />
+      </div>
+      <div class="banner-slide">
+        <img src="assets/images/Banner4.jpg" alt="Banner 4" />
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Products and Recommendation Section -->
+    <div class="flex flex-col md:flex-row gap-8">
+      <!-- Product Grid -->
+      <div class="w-full md:w-3/4">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+          <!-- Product Card 1 -->
+          <div class="glass rounded-lg overflow-hidden group shadow-md">
+            <img src="assets/images/Art1.jpeg"
+                 alt="Produk 1"
+                 class="w-full h-48 object-cover group-hover:opacity-80 transition duration-300"
+                 loading="lazy"
+                 onerror="handleImageError(this)">
+            <div class="p-4 text-center">
+              <h3 class="font-semibold text-gray-700">Heavenly Zoran - Shadow</h3>
+              <p class="text-pink-500 font-bold mt-1">Rp 740.000</p>
+            </div>
+          </div>
+
+          <!-- Product Card 2 -->
+          <div class="glass rounded-lg overflow-hidden group shadow-md">
+            <img src="assets/images/Art2.jpeg"
+                 alt="Produk 2"
+                 class="w-full h-48 object-cover group-hover:opacity-80 transition duration-300"
+                 loading="lazy"
+                 onerror="handleImageError(this)">
+            <div class="p-4 text-center">
+               <h3 class="font-semibold text-gray-700">Heavenly Zoran - Shaolin</h3>
+              <p class="text-pink-500 font-bold mt-1">Rp 710.100</p>
+            </div>
+          </div>
+
+          <!-- Product Card 3 -->
+          <div class="glass rounded-lg overflow-hidden group shadow-md">
+            <img src="assets/images/Art3.jpeg"
+                 alt="Produk 3"
+                 class="w-full h-48 object-cover group-hover:opacity-80 transition duration-300"
+                 loading="lazy"
+                 onerror="handleImageError(this)">
+            <div class="p-4 text-center">
+               <h3 class="font-semibold text-gray-700">Heavenly Zoran - Enlight</h3>
+              <p class="text-pink-500 font-bold mt-1">Rp 820.000</p>
+            </div>
+          </div>
+
+          <!-- Product Card 4 -->
+          <div class="glass rounded-lg overflow-hidden group shadow-md">
+            <img src="assets/images/Art4.jpeg"
+                 alt="Produk 4"
+                 class="w-full h-48 object-cover group-hover:opacity-80 transition duration-300"
+                 loading="lazy"
+                 onerror="handleImageError(this)">
+            <div class="p-4 text-center">
+               <h3 class="font-semibold text-gray-700">Heavenly Candra</h3>
+              <p class="text-pink-500 font-bold mt-1">Rp 930.000</p>
+            </div>
+          </div>
+
+          <!-- Product Card 5 -->
+          <div class="glass rounded-lg overflow-hidden group shadow-md">
+            <img src="assets/images/Art5.jpeg"
+                 alt="Produk 5"
+                 class="w-full h-48 object-cover group-hover:opacity-80 transition duration-300"
+                 loading="lazy"
+                 onerror="handleImageError(this)">
+            <div class="p-4 text-center">
+               <h3 class="font-semibold text-gray-700">Heavenly Zoran - Shades</h3>
+              <p class="text-pink-500 font-bold mt-1">Rp 740.000</p>
+            </div>
+          </div>
+
+          <!-- Product Card 6 -->
+          <div class="glass rounded-lg overflow-hidden group shadow-md">
+            <img src="assets/images/Art6.jpeg"
+                 alt="Produk 6"
+                 class="w-full h-48 object-cover group-hover:opacity-80 transition duration-300"
+                 loading="lazy"
+                 onerror="handleImageError(this)">
+            <div class="p-4 text-center">
+              <h3 class="font-semibold text-gray-700">Heavenly Zoran - Cosmos</h3>
+              <p class="text-pink-500 font-bold mt-1">Rp 710.100</p>
+            </div>
+          </div>
+
+          <!-- Product Card 7 -->
+          <div class="glass rounded-lg overflow-hidden group shadow-md">
+            <img src="assets/images/Art7.jpeg"
+                 alt="Produk 7"
+                 class="w-full h-48 object-cover group-hover:opacity-80 transition duration-300"
+                 loading="lazy"
+                 onerror="handleImageError(this)">
+            <div class="p-4 text-center">
+               <h3 class="font-semibold text-gray-700">Heavenly Zoran - Armanth</h3>
+              <p class="text-pink-500 font-bold mt-1">Rp 820.000</p>
+            </div>
+          </div>
+
+          <!-- Product Card 8 -->
+          <div class="glass rounded-lg overflow-hidden group shadow-md">
+            <img src="assets/images/Art8.jpeg"
+                 alt="Produk 8"
+                 class="w-full h-48 object-cover group-hover:opacity-80 transition duration-300"
+                 loading="lazy"
+                 onerror="handleImageError(this)">
+            <div class="p-4 text-center">
+               <h3 class="font-semibold text-gray-700">Heavenly Chaos</h3>
+              <p class="text-pink-500 font-bold mt-1">Rp 930.000</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recommendation Sidebar -->
+      <aside class="w-full md:w-1/4">
+        <div class="glass p-6 rounded-lg shadow-md">
+          <h2 class="text-xl font-bold text-gray-800 mb-4 pb-2 border-b">Rekomendasi</h2>
+          <div class="space-y-4">
+            <!-- Recommended Item -->
+            <div>
+              <img src="assets/images/Art10.jpeg"
+                   alt="Baju Rekomendasi"
+                   class="w-full rounded-lg mb-2"
+                   loading="lazy"
+                   onerror="handleImageError(this)">
+              <h3 class="font-semibold text-gray-700">Heavenly Gaia - Cassandra</h3>
+              <p class="text-gray-500 text-sm">Best Sell</p>
+              <p class="text-pink-500 font-bold mt-1">Rp1.000.000,00</p>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="mt-8 border-t">
+    <div class="container mx-auto py-8 px-4 md:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-gray-600">
+      <div class="glass p-4 rounded-lg">
+        <h3 class="font-bold text-lg mb-3 text-gray-800">QUESTIONS</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="hover:text-pink-500">How to Buy</a></li>
+          <li><a href="#" class="hover:text-pink-500">Payment Methods</a></li>
+          <li><a href="#" class="hover:text-pink-500">Shipping Info</a></li>
+          <li><a href="#" class="hover:text-pink-500">Returns</a></li>
+        </ul>
+      </div>
+
+      <div class="glass p-4 rounded-lg">
+        <h3 class="font-bold text-lg mb-3 text-gray-800">CATEGORIES</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="hover:text-pink-500">Heavenly Series</a></li>
+          <li><a href="#" class="hover:text-pink-500">Zoran Series</a></li>
+          <li><a href="#" class="hover:text-pink-500">Gaia Accesories</a></li>
+          <li><a href="#" class="hover:text-pink-500">Aksesoris</a></li>
+        </ul>
+      </div>
+
+      <div class="glass p-4 rounded-lg">
+        <h3 class="font-bold text-lg mb-3 text-gray-800">FOLLOW US</h3>
+        <div class="flex space-x-4">
+          <a href="#" class="text-gray-500 hover:text-pink-500" aria-label="Facebook">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+          </a>
+          <a href="#" class="text-gray-500 hover:text-pink-500" aria-label="Instagram">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.08 2.525c.636-.247 1.363-.416 2.427-.465C9.53 2.013 9.884 2 12.315 2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 8a3 3 0 110-6 3 3 0 010 6zm5.75-9.25a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z" clip-rule="evenodd" /></svg>
+          </a>
+          <a href="#" class="text-gray-500 hover:text-pink-500" aria-label="Twitter">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center text-gray-500 border-t py-4 mt-4">
+      <p>&copy; 2025 Unwritten. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* === PENGATURAN GLOBAL & VARIABEL === */
+:root {
+    --color-primary: #3480F8;
+    --color-secondary: #FF6D22;
+    --color-accent: #F134F8;
+    --background-color: #1a1a2e;
+    --text-color: #e0e0e0;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--background-color) url('https://www.transparenttextures.com/patterns/cubes.png');
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.glass {
+    background: var(--glass-bg);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    border: 1px solid var(--glass-border);
+}
+
+/* === STYLE UNTUK WEBSITE UTAMA (FRONTEND) === */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+#header {
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-bottom: 1.5rem;
+}
+
+#header h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#menu {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+#menu a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 400;
+    padding: 10px 20px;
+    border-radius: 12px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+#menu a:hover, #menu a.active {
+    background: var(--color-primary);
+    color: #fff;
+}
+
+#main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    flex: 1;
+}
+
+#l-side, #r-side {
+    flex: 1;
+    min-width: 180px;
+    padding: 20px;
+    text-align: center;
+}
+
+#content {
+    flex: 3;
+    min-width: 300px;
+    padding: 30px;
+}
+
+#content h2 {
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.produk-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.produk {
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.produk:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.produk img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.produk h3 {
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+form table {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+    border-spacing: 0 15px;
+}
+
+form td {
+    padding: 5px;
+    vertical-align: middle;
+}
+
+input[type="text"], input[type="date"], textarea, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    background-color: var(--glass-bg);
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+}
+
+input[type="text"]:focus, input[type="date"]:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+input[type="radio"], input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.form-actions {
+    text-align: right;
+}
+
+input[type="submit"], input[type="reset"] {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
+}
+
+input[type="submit"] {
+    background-color: var(--color-primary);
+}
+input[type="submit"]:hover {
+    background-color: #2a72e6;
+}
+
+input[type="reset"] {
+    background-color: var(--color-secondary);
+}
+input[type="reset"]:hover {
+    background-color: #e65c19;
+}
+
+#content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+#footer {
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+}
+
+/* === STYLE UNTUK DASHBOARD ADMIN === */
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px;
+    gap: 20px;
+    width: 100%;
+}
+
+.page-container #header, .page-container #footer {
+    padding: 20px;
+    text-align: center;
+}
+
+.page-container #header h1 { font-size: 1.8rem; }
+
+#main-container { display: flex; flex: 1; gap: 20px; }
+
+#sidebar { width: 250px; padding: 20px; flex-shrink: 0; }
+#sidebar h3 { margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--glass-border); }
+
+.admin-nav a { display: flex; align-items: center; gap: 15px; color: var(--text-color); text-decoration: none; padding: 15px; margin-bottom: 10px; border-radius: 8px; transition: background 0.3s ease; cursor: pointer;}
+.admin-nav a:hover, .admin-nav a.active { background: var(--color-primary); color: #fff; }
+
+.page-container #content { flex: 1; padding: 30px; text-align: left; }
+
+.btn { padding: 12px 20px; border: none; border-radius: 8px; background: var(--color-primary); color: #fff; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.3s ease; text-decoration: none; display: inline-block; }
+.btn:hover { background: #2a72e6; }
+.btn-add { margin-bottom: 20px; }
+
+.input-group { text-align: left; margin-bottom: 20px; max-width: 500px; }
+.input-group label { display: block; margin-bottom: 5px; }
+.input-group input, .input-group textarea, .input-group select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--glass-border); background: rgba(0,0,0,0.2); color: var(--text-color); font-size: 1rem; }
+
+.form-layout { margin-top: 20px; }
+
+.data-table { margin-top: 20px; overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; text-align: left; }
+thead { border-bottom: 1px solid var(--glass-border); }
+th, td { padding: 15px; }
+tbody tr:hover { background: var(--glass-bg); }
+
+.action-btn { color: var(--text-color); margin: 0 5px; font-size: 1.1rem; text-decoration: none; }
+.action-btn.edit:hover { color: var(--color-primary); }
+.action-btn.delete:hover { color: var(--color-secondary); }
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+    #main, #main-container {
+        flex-direction: column;
+    }
+    #menu {
+        flex-direction: column;
+        align-items: center;
+    }
+    #header h1 {
+        font-size: 2rem;
+    }
+    #sidebar {
+        width: 100%;
+    }
+}
+

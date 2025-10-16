@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- Path CSS menuju file di luar folder admin -->
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body>
+    <div class="page-container">
+        <header id="header" class="glass">
+            <h1>Halaman Administrator</h1>
+        </header>
+
+        <main id="main-container">
+            <aside id="sidebar" class="glass">
+                <h3>Menu:</h3>
+                <!-- Navigasi diubah untuk memicu JavaScript -->
+                <nav class="admin-nav">
+                    <a href="#dashboard" class="nav-link active">
+                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                    </a>
+                    <a href="#data-user" class="nav-link">
+                        <i class="fas fa-users"></i> Data User
+                    </a>
+                    <a href="#kelola-produk" class="nav-link">
+                        <i class="fas fa-box"></i> Kelola Produk
+                    </a>
+                    <a href="#edit-password" class="nav-link">
+                        <i class="fas fa-key"></i> Edit Password
+                    </a>
+                    <!-- Tombol kembali ke halaman utama -->
+                     <a href="index.html" class="nav-link" style="margin-top: 20px; background: var(--color-secondary);">
+                        <i class="fas fa-arrow-left"></i> Kembali ke Situs
+                    </a>
+                </nav>
+            </aside>
+
+            <section id="content" class="glass">
+                <!-- Konten akan ditampilkan di sini oleh JavaScript -->
+                <div id="dashboard-content" class="content-section">
+                    <h2>Selamat Datang di Dashboard</h2>
+                    <p>Pilih menu di samping untuk mulai mengelola konten website Anda.</p>
+                </div>
+
+                <div id="data-user-content" class="content-section" style="display:none;">
+                    <h2>Kelola Data User</h2>
+                    <div class="data-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nama Lengkap</th>
+                                    <th>Alamat</th>
+                                    <th>Jenis Kelamin</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Budi Santoso</td>
+                                    <td>Jl. Merdeka No. 10, Jakarta</td>
+                                    <td>Laki-laki</td>
+                                    <td>
+                                        <a href="#" class="action-btn edit"><i class="fas fa-edit"></i></a>
+                                        <a href="#" class="action-btn delete"><i class="fas fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Citra Lestari</td>
+                                    <td>Jl. Mawar No. 5, Bandung</td>
+                                    <td>Perempuan</td>
+                                     <td>
+                                        <a href="#" class="action-btn edit"><i class="fas fa-edit"></i></a>
+                                        <a href="#" class="action-btn delete"><i class="fas fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="kelola-produk-content" class="content-section" style="display:none;">
+                    <h2>Kelola Produk</h2>
+                    <button class="btn btn-add"><i class="fas fa-plus"></i> Tambah Produk</button>
+                    <div class="data-table">
+                       <table>
+                           <thead>
+                               <tr>
+                                   <th>Nama Produk</th>
+                                   <th>Kategori</th>
+                                   <th>Harga</th>
+                                   <th>Stok</th>
+                                   <th>Aksi</th>
+                               </tr>
+                           </thead>
+                           <tbody>
+                               <tr>
+                                   <td>Kaos Premium</td>
+                                   <td>Pakaian</td>
+                                   <td>Rp 150.000</td>
+                                   <td>50</td>
+                                   <td>
+                                       <a href="#" class="action-btn edit"><i class="fas fa-edit"></i></a>
+                                       <a href="#" class="action-btn delete"><i class="fas fa-trash"></i></a>
+                                   </td>
+                               </tr>
+                                <tr>
+                                   <td>Sepatu Sport</td>
+                                   <td>Alas Kaki</td>
+                                   <td>Rp 350.000</td>
+                                   <td>30</td>
+                                   <td>
+                                       <a href="#" class="action-btn edit"><i class="fas fa-edit"></i></a>
+                                       <a href="#" class="action-btn delete"><i class="fas fa-trash"></i></a>
+                                   </td>
+                               </tr>
+                           </tbody>
+                       </table>
+                    </div>
+                </div>
+
+                <div id="edit-password-content" class="content-section" style="display:none;">
+                    <h2>Ubah Password</h2>
+                    <form class="form-layout">
+                        <div class="input-group">
+                            <label for="old_pass">Password Lama</label>
+                            <input type="password" id="old_pass" name="old_pass">
+                        </div>
+                         <div class="input-group">
+                            <label for="new_pass">Password Baru</label>
+                            <input type="password" id="new_pass" name="new_pass">
+                        </div>
+                         <div class="input-group">
+                            <label for="confirm_pass">Konfirmasi Password Baru</label>
+                            <input type="password" id="confirm_pass" name="confirm_pass">
+                        </div>
+                        <button type="submit" class="btn">Simpan Perubahan</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <footer id="footer" class="glass">
+            <p>&copy; 2024 Online Shop Admin Panel</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const contentSections = document.querySelectorAll('.content-section');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    // Mencegah link pindah halaman
+                    if(this.getAttribute('href').startsWith('#')) {
+                        event.preventDefault();
+                    }
+
+                    // Hapus kelas 'active' dari semua link
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+                    // Tambahkan kelas 'active' ke link yang diklik
+                    this.classList.add('active');
+
+                    const targetId = this.getAttribute('href').substring(1);
+                    
+                    // Sembunyikan semua section konten
+                    contentSections.forEach(section => {
+                        section.style.display = 'none';
+                    });
+
+                    // Tampilkan section konten yang sesuai
+                    const targetSection = document.getElementById(targetId + '-content');
+                    if(targetSection) {
+                        targetSection.style.display = 'block';
+                    }
+                });
+            });
+
+            // Tampilkan konten dashboard secara default
+            document.querySelector('.nav-link[href="#dashboard"]').click();
+        });
+    </script>
+</body>
+</html>
