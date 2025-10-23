@@ -1,0 +1,77 @@
+/* Styling Kustom untuk melengkapi Bootstrap */
+
+/* Variabel Warna Kustom */
+:root {
+  --custom-pink: #f472b6; /* Warna pink yang sama dengan bg-pink-400 tailwind */
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif;
+}
+
+/* Kelas utilitas untuk warna */
+.bg-custom-pink {
+  background-color: var(--custom-pink);
+}
+
+.text-custom-pink {
+  color: var(--custom-pink);
+}
+
+/* Efek Glassmorphism */
+.glass, .glass--nav {
+  background: rgba(255, 255, 255, 0.25); /* Latar belakang semi-transparan */
+  backdrop-filter: blur(10px);          /* Efek blur pada konten di belakangnya */
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 0.75rem; /* Menyamakan dengan .rounded-3 Bootstrap */
+}
+
+/* Banner Styling */
+.banner-image {
+  object-fit: cover;
+  filter: brightness(0.9);
+}
+/* Tombol custom pink */
+.btn-custom-pink {
+  background-color: var(--custom-pink);
+  color: white;
+  font-weight: 500;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-custom-pink:hover {
+  background-color: #ec4899; /* Versi sedikit lebih gelap */
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+.banner-overlay {
+  background-color: rgba(0, 0, 0, var(--banner-overlay-opacity, 0.5));
+}
+
+/* Card Produk Hover Effect */
+.product-card .card-img-top {
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.product-card:hover .card-img-top {
+  opacity: 0.85;
+  transform: scale(1.05);
+}
+
+/* Nav Link Hover Effect */
+.nav-link {
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--custom-pink) !important;
+}
+
+/* Social Icon Hover */
+.social-icon:hover {
+    color: var(--custom-pink) !important;
+}

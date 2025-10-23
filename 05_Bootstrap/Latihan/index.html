@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unwritten - Lightfantasy Outfit (Bootstrap Version)</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="app.css" />
+</head>
+<body class="bg-light">
+
+  <nav class="navbar navbar-expand-lg glass shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand h4 fw-bold mb-0 text-custom-pink" href="/">Unwritten</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto text-center">
+          <li class="nav-item"><a href="#" class="nav-link text-dark fw-medium">Beranda</a></li>
+          <li class="nav-item"><a href="#" class="nav-link text-dark fw-medium">Produk</a></li>
+          <li class="nav-item"><a href="#" class="nav-link text-dark fw-medium">Member</a></li>
+          <li class="nav-item"><a href="#" class="nav-link text-dark fw-medium">Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container p-4 p-md-5">
+    <section class="mb-5 rounded-3 overflow-hidden">
+      <div class="position-relative d-flex align-items-center justify-content-center" style="height: 320px; --banner-overlay-opacity: 0.6;">
+        <img src="assets/images/Banner.jpg" alt="Banner Lightfantasy Outfit" class="banner-image position-absolute w-100 h-100" loading="lazy" onerror="handleImageError(this)">
+        <div class="banner-overlay position-absolute top-0 start-0 w-100 h-100"></div>
+        <div class="position-absolute text-center px-4">
+          <div class="glass banner-title p-4">
+            <h2 class="display-5 fw-bolder text-white">Lightfantasy Outfit</h2>
+            <p class="lead fs-6 text-light mt-1">Explore the subtle elegance of Nusantara-inspired styles</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="row g-4">
+      <div class="col-lg-9">
+        <div class="row row-cols-2 row-cols-md-3 row-cols-xl-4 g-4">
+          
+          <div class="col">
+            <div class="card h-100 glass shadow-sm overflow-hidden product-card">
+              <img src="assets/images/Art1.jpeg" alt="Produk 1" class="card-img-top product-image" loading="lazy" onclick="toggleDetail(this)" onerror="handleImageError(this)">
+              <div class="card-body text-center">
+                <h3 class="card-title h6 fw-semibold text-body-secondary">Heavenly Zoran - Shadow</h3>
+                <p class="text-custom-pink fw-bold mt-1 mb-0">Rp 740.000</p>
+                <button class="btn btn-custom-pink mt-2">Beli Sekarang</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col">
+  <div class="card h-100 glass shadow-sm overflow-hidden product-card">
+    <img src="assets/images/Art2.jpeg" alt="Produk 2" class="card-img-top" loading="lazy" onerror="handleImageError(this)">
+    <div class="card-body text-center">
+      <h3 class="card-title h6 fw-semibold text-body-secondary">Heavenly Zoran - Shaolin</h3>
+      <p class="text-custom-pink fw-bold mt-1 mb-0">Rp 710.100</p>
+      <button class="btn btn-custom-pink mt-2">Beli Sekarang</button>
+    </div>
+  </div>
+</div>
+
+          <div class="col">
+            <div class="card h-100 glass shadow-sm overflow-hidden product-card">
+              <img src="assets/images/Art3.jpeg" alt="Produk 3" class="card-img-top" loading="lazy" onerror="handleImageError(this)">
+              <div class="card-body text-center">
+                <h3 class="card-title h6 fw-semibold text-body-secondary">Heavenly Zoran - Enlight</h3>
+                <p class="text-custom-pink fw-bold mt-1 mb-0">Rp 820.000</p>
+                <button class="btn btn-custom-pink mt-2">Beli Sekarang</button>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100 glass shadow-sm overflow-hidden product-card">
+              <img src="assets/images/Art4.jpeg" alt="Produk 4" class="card-img-top" loading="lazy" onerror="handleImageError(this)">
+              <div class="card-body text-center">
+                <h3 class="card-title h6 fw-semibold text-body-secondary">Heavenly Candra</h3>
+                <p class="text-custom-pink fw-bold mt-1 mb-0">Rp 930.000</p>
+                <button class="btn btn-custom-pink mt-2">Beli Sekarang</button>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100 glass shadow-sm overflow-hidden product-card">
+              <img src="assets/images/Art5.jpeg" alt="Produk 5" class="card-img-top" loading="lazy" onerror="handleImageError(this)">
+              <div class="card-body text-center">
+                <h3 class="card-title h6 fw-semibold text-body-secondary">Heavenly Zoran - Shades</h3>
+                <p class="text-custom-pink fw-bold mt-1 mb-0">Rp 740.000</p>
+                <button class="btn btn-custom-pink mt-2">Beli Sekarang</button>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100 glass shadow-sm overflow-hidden product-card">
+              <img src="assets/images/Art6.jpeg" alt="Produk 6" class="card-img-top" loading="lazy" onerror="handleImageError(this)">
+              <div class="card-body text-center">
+                <h3 class="card-title h6 fw-semibold text-body-secondary">Heavenly Zoran - Cosmos</h3>
+                <p class="text-custom-pink fw-bold mt-1 mb-0">Rp 710.100</p>
+                <button class="btn btn-custom-pink mt-2">Beli Sekarang</button>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100 glass shadow-sm overflow-hidden product-card">
+              <img src="assets/images/Art7.jpeg" alt="Produk 7" class="card-img-top" loading="lazy" onerror="handleImageError(this)">
+              <div class="card-body text-center">
+                <h3 class="card-title h6 fw-semibold text-body-secondary">Heavenly Zoran - Armanth</h3>
+                <p class="text-custom-pink fw-bold mt-1 mb-0">Rp 820.000</p>
+                <button class="btn btn-custom-pink mt-2">Beli Sekarang</button>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100 glass shadow-sm overflow-hidden product-card">
+              <img src="assets/images/Art8.jpeg" alt="Produk 8" class="card-img-top" loading="lazy" onerror="handleImageError(this)">
+              <div class="card-body text-center">
+                <h3 class="card-title h6 fw-semibold text-body-secondary">Heavenly Chaos</h3>
+                <p class="text-custom-pink fw-bold mt-1 mb-0">Rp 930.000</p>
+                <button class="btn btn-custom-pink mt-2">Beli Sekarang</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="col-lg-3">
+        <div class="glass p-4 rounded-3 shadow-sm">
+          <h2 class="h4 fw-bold text-body-emphasis mb-3 pb-2 border-bottom">Rekomendasi</h2>
+          <div>
+            <img src="assets/images/Art10.jpeg" alt="Baju Rekomendasi" class="img-fluid rounded-3 mb-2" loading="lazy" onerror="handleImageError(this)">
+            <h3 class="h6 fw-semibold text-body-secondary">Heavenly Gaia - Cassandra</h3>
+            <p class="text-muted small">Best Sell</p>
+            <p class="text-custom-pink fw-bold mt-1">Rp1.000.000,00</p>
+            <button class="btn btn-custom-pink mt-2">Beli Sekarang</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+
+  </main>
+
+  <footer class="mt-5 border-top">
+    <div class="container py-5 px-4 px-md-5">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="glass p-4 rounded-3 h-100">
+            <h3 class="fw-bold h5 mb-3 text-body-emphasis">FAQ</h3>
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">How to Buy</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Payment Methods</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Shipping Info</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Returns</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="glass p-4 rounded-3 h-100">
+            <h3 class="fw-bold h5 mb-3 text-body-emphasis">CATEGORIES</h3>
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Heavenly Series</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Zoran Series</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Gaia Accesories</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Aksesoris</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="glass p-4 rounded-3 h-100">
+            <h3 class="fw-bold h5 mb-3 text-body-emphasis">FOLLOW US</h3>
+            <div class="d-flex">
+              <a href="#" class="text-muted me-3 social-icon" aria-label="Facebook">
+                <svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg>
+              </a>
+              <a href="#" class="text-muted me-3 social-icon" aria-label="Instagram">
+                 <svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg>
+              </a>
+               <a href="#" class="text-muted social-icon" aria-label="Twitter">
+                 <svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center text-muted border-top pt-4 mt-4">
+        <p>&copy; 2025 Unwritten. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="facebook" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></symbol>
+    <symbol id="instagram" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049 1.064.218 1.791.465 2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.08 2.525c.636-.247 1.363-.416 2.427-.465C9.53 2.013 9.884 2 12.315 2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 8a3 3 0 110-6 3 3 0 010 6zm5.75-9.25a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z" clip-rule="evenodd" /></symbol>
+    <symbol id="twitter" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></symbol>
+  </svg>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
