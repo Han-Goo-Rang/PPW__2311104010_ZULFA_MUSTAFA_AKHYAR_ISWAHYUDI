@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>
+        oop
+    </h2>
+
+    <p id="outputObject">
+    </p>
+    <p id="outputTruk">
+    </p>
+    <script>
+        var mobil = {
+            "warna-badan": "merah",
+            "nomor-polisi": "BK1234AB",
+            merk: "Toyota", // properti dengan nama biasa 
+            tahun: 2020
+        };
+ 
+        // Nested Object 
+        var jadwal = {
+            platform: 34,
+            telah_berangkat: false,
+            asal: {
+                kode_kota: "MDN",
+                nama_kota: "Medan",
+                waktu: "2023-12-29 14:00"
+            },
+            tujuan: {
+                kode_kota: "JKT",
+                nama_kota: "Jakarta",
+                waktu: "2023-12-29 17:30"
+            }
+        };
+
+        mobil.pajak = 15000000
+        mobil["warna"] = "ireng"
+
+        document.getElementById("outputObject").innerHTML =
+            "Warna Mobil: " + mobil["warna-badan"] + "<br>" +
+            "Nomor Polisi: " + mobil["nomor-polisi"] + "<br>" +
+            "Merk: " + mobil.merk + "<br>" +
+            "Tahun: " + mobil.tahun + "<br>" +
+            "Asal: " + jadwal.asal.nama_kota + "<br>" +
+            "Tujuan: " + jadwal.tujuan.nama_kota + "<br>" +
+            "pajak: " + mobil.pajak + "<br>" + 
+            "warna: " + mobil["warna"]
+        
+        var truk = Object.create(mobil);
+        document.getElementById("outputTruk").innerHTML =
+            "warna truk: " + truk["warna-badan"]
+
+    </script>
+</body>
+
+</html>

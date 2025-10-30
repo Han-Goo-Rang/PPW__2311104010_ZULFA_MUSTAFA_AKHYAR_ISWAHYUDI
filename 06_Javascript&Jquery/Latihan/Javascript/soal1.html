@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Tugas 1 - Total Harga Pembelian</title>
+</head>
+<body>
+  <h2>Daftar Barang</h2>
+  <table border="1" cellpadding="8">
+    <tr>
+      <th>Nama Barang</th>
+      <th>Harga Satuan</th>
+      <th>Jumlah</th>
+      <th>Total</th>
+    </tr>
+    <tbody id="daftar-barang"></tbody>
+  </table>
+
+  <h3 id="total-semua"></h3>
+
+  <script>
+    const barang = [
+      { nama: "Susu UHT", harga: 42000, jumlah: 10 },
+      { nama: "Roti Tawar", harga: 30000, jumlah: 3 },
+      { nama: "Mie Instan", harga: 20000, jumlah: 5 },
+      { nama: "Sosis", harga: 51000, jumlah: 7 },
+    ];
+
+    let totalSemua = 0;
+    const tbody = document.getElementById("daftar-barang");
+
+    barang.forEach(b => {
+      const total = b.harga * b.jumlah;
+      totalSemua += total;
+
+      const row = `
+        <tr>
+          <td>${b.nama}</td>
+          <td>Rp ${b.harga.toLocaleString()}</td>
+          <td>${b.jumlah}</td>
+          <td>Rp ${total.toLocaleString()}</td>
+        </tr>`;
+      tbody.innerHTML += row;
+    });
+
+    document.getElementById("total-semua").innerText =
+      "Total Semua: Rp " + totalSemua.toLocaleString();
+  </script>
+</body>
+</html>

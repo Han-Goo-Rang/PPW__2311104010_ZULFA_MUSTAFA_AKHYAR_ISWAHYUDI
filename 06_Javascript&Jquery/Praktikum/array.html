@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>
+        Array
+    </h2>
+    <p id="array2">
+
+    </p>
+
+    <!-- <script>
+        var data = ["Satu", 2, true, "Tiga", 4]; // Array dengan tipe data campuran 
+        var arr2 = [["satu", "dua"], ["tiga", "empat"]]; // Array 2D 
+        document.getElementById("array").innerHTML =
+            "Elemen pertama: " + data[0] + "<br>" +
+            "Elemen ketiga: " + data[2] + "<br>" +
+            "Isi arr2: " + arr2 + "<br>" +
+            "Elemen arr2[0][1]: " + arr2[0][1] + "<br>" + //elemen pada baris 0, kolom 1 
+            data[10];
+        // mengembalikan undefined
+    </script> -->
+
+    <script>
+        var data2 = ["pisang", "apel", "mangga"];
+        // Menampilkan hasil ke HTML 
+        document.getElementById("array2").innerHTML =
+            "Isi awal array: " + data2 + "<br>" +
+            "Panjang awal array: " + data2.length + "<br><br>" +
+            "Menambahkan durian (push): " + data2.push("durian") + "<br>" +
+            "Isi array setelah push: " + data2 + "<br>" +
+            "Menghapus elemen terakhir (pop): " + data2.pop() + "<br>" +
+            "Isi array setelah pop: " + data2 + "<br>"; 
+    </script>
+</body>
+
+</html>

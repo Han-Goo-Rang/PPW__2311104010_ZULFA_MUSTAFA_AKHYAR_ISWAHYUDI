@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+    </script>
+</head>
+
+<body>
+    <h2>Tipe data JS</h2>
+    <p id="outputTipeData">ini adalah tipe-tipe data JS</p>
+
+    <h3>Lanjutan</h3>
+    <p id="test">Latihan</p>
+    <script>
+        var angka = 42;
+        var teks = "Bangjoule";
+        var benar = true;
+        var salah = false;
+        var kosong = null;
+        var tidakDidefinisikan;
+        var daftar = ["apel", "pisang", "mangga"];
+        var tanggal = new Date();
+        var pola = /[A-Z]/;
+        var orang = { nama: "Zulfa", umur: 21 };
+        var hasil = "";
+        hasil += "<b>Number:</b> " + angka + "<br>";
+        hasil += "<b>String:</b> " + teks + "<br>";
+        hasil += "<b>Boolean 1:</b> " + benar + "<br>";
+        hasil += "<b>Boolean 0:</b> " + salah + "<br>";
+        hasil += "<b>Null:</b> " + kosong + "<br>";
+        hasil += "<b>Undefined:</b> " + tidakDidefinisikan + "<br>";
+        hasil += "<b>Array:</b> " + daftar.join(", ") + "<br>";
+        hasil += "<b>Date:</b> " + tanggal + "<br>";
+        hasil += "<b>RegExp:</b> " + pola + ", Ini Sirsak = " + pola.test("Sirsak") +
+            "<br>";
+        hasil += "<b>Object:</b> nama = " + orang.nama + ", umur = " + orang.umur +
+            "<br>";
+        document.getElementById("outputTipeData").innerHTML = hasil;
+
+        var nama = "Zulfa";
+        var umur = 20;
+        var isMahasiswa = true;
+        document.getElementById("test").innerHTML =
+            "Nama lengkap: " + nama + "<br>" +
+            "Umur: " + umur + "<br>" +
+            "Mahasiswa: " + isMahasiswa;
+            window.alert("EIYO WHANGSAF NI---")
+            console.log("123232")
+
+    </script>
+</body>
+
+</html>

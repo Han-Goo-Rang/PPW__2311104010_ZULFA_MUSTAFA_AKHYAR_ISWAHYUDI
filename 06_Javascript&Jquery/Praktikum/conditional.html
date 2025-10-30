@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>
+        Kondisi
+    </h2>
+    <p id="whileLoop">This is hellyea conditional</p>
+    <!-- <script>
+        var pendidikan = "S2"; 
+        var gelar; 
+ 
+        if (pendidikan === "S1") { 
+            gelar = "Sarjana"; 
+        } else if (pendidikan === "S2") { 
+            gelar = "Master"; 
+        } else if (pendidikan === "S3") { 
+            gelar = "Doktor"; 
+        } else { 
+            gelar = "Tidak diketahui"; 
+        } 
+ 
+        document.getElementById("outputPercabangan").innerHTML = 
+            "Sekarang kamu: " + pendidikan + ", gelar kamu: " + gelar;
+    </script> -->
+    <script>
+        var text1 = "";
+        var i = 0;
+        while (i < 3) {
+            text1 += "Perulangan while ke-" + i + "<br>"; // Tambah teks dengan nomor 
+            i++; // Increment i by 1 
+        }
+        document.getElementById("whileLoop").innerHTML = text1; 
+    </script>
+</body>
+
+</html>
