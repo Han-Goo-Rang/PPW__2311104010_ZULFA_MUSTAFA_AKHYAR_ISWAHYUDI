@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Unwritten</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/app.css">
+    <style>
+        .dashboard-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 0.5rem;
+        }
+
+        .dashboard-header h1 {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .dashboard-header p {
+            margin: 0.5rem 0 0 0;
+            opacity: 0.9;
+        }
+
+        .btn-add-product {
+            background-color: #e75480;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-add-product:hover {
+            background-color: #d64570;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(231, 84, 128, 0.4);
+            color: white;
+        }
+
+        .table-container {
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .table {
+            margin: 0;
+        }
+
+        .table thead {
+            background-color: #f8f9fa;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .table th {
+            font-weight: 600;
+            color: #333;
+            padding: 1rem;
+            vertical-align: middle;
+        }
+
+        .table td {
+            padding: 1rem;
+            vertical-align: middle;
+        }
+
+        .product-image {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 0.25rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-sm {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.85rem;
+        }
+
+        .btn-edit {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-edit:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-delete {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-delete:hover {
+            background-color: #c82333;
+        }
+
+        .pagination {
+            margin-top: 1.5rem;
+            justify-content: center;
+        }
+
+        .loading-spinner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 300px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #999;
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .navbar-custom {
+            background: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            color: #e75480 !important;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .btn-logout {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-logout:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Unwritten Admin</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <span class="nav-link" id="userDisplay">Loading...</span>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn-logout" id="logoutBtn">Logout</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid py-4">
+        <!-- Header -->
+        <div class="dashboard-header">
+            <h1>Dashboard Admin</h1>
+            <p>Kelola produk Unwritten dengan mudah</p>
+        </div>
+
+        <!-- Alert Messages -->
+        <div id="successAlert" class="alert alert-success alert-dismissible fade show" role="alert"
+            style="display: none;">
+            <strong>Sukses!</strong> <span id="successMessage"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+
+        <div id="errorAlert" class="alert alert-danger alert-dismissible fade show" role="alert" style="display: none;">
+            <strong>Error!</strong> <span id="errorMessage"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+
+        <!-- Add Product Button -->
+        <div class="mb-4">
+            <button class="btn-add-product" id="addProductBtn">
+                <i class="fas fa-plus"></i> Tambah Produk
+            </button>
+        </div>
+
+        <!-- Products Table -->
+        <div class="table-container">
+            <div id="loadingSpinner" class="loading-spinner">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <i class="fas fa-inbox"></i>
+                <h5>Tidak ada produk</h5>
+                <p>Mulai dengan menambahkan produk baru</p>
+            </div>
+
+            <table class="table" id="productsTable" style="display: none;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Gambar</th>
+                        <th>Nama Produk</th>
+                        <th>Harga</th>
+                        <th>Deskripsi</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="productsTableBody">
+                </tbody>
+            </table>
+
+            <!-- Pagination -->
+            <nav id="paginationNav" style="display: none;">
+                <ul class="pagination" id="paginationList"></ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Add/Edit Product Modal -->
+    <div class="modal fade" id="productModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModalTitle">Tambah Produk</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="productForm">
+                        <input type="hidden" id="productId" name="id">
+
+                        <div class="mb-3">
+                            <label for="productName" class="form-label">Nama Produk *</label>
+                            <input type="text" class="form-control" id="productName" name="name" required>
+                            <small class="text-danger" id="nameError"></small>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="productPrice" class="form-label">Harga *</label>
+                            <input type="text" class="form-control" id="productPrice" name="price"
+                                placeholder="Rp 100.000" required>
+                            <small class="text-danger" id="priceError"></small>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="productDescription" class="form-label">Deskripsi *</label>
+                            <textarea class="form-control" id="productDescription" name="description" rows="4"
+                                required></textarea>
+                            <small class="text-danger" id="descriptionError"></small>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="productMaterial" class="form-label">Bahan</label>
+                            <input type="text" class="form-control" id="productMaterial" name="material"
+                                placeholder="Katun Satin Premium">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="productAccessories" class="form-label">Aksesoris</label>
+                            <input type="text" class="form-control" id="productAccessories" name="accessories"
+                                placeholder="Emerald">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="productColors" class="form-label">Warna</label>
+                            <input type="text" class="form-control" id="productColors" name="colors"
+                                placeholder="Emas, Azure, Ametyst">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="productSizes" class="form-label">Ukuran</label>
+                            <input type="text" class="form-control" id="productSizes" name="sizes"
+                                placeholder="XL, XXL, XXXL">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="productImageFile" class="form-label">Upload Gambar</label>
+                            <input type="file" class="form-control" id="productImageFile" name="imageFile"
+                                accept="image/*" multiple>
+                            <small class="text-muted">Pilih satu atau lebih gambar dari device</small>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="productImages" class="form-label">Atau Gunakan Nama File Existing</label>
+                            <input type="text" class="form-control" id="productImages" name="images"
+                                placeholder="Art1.jpeg, Art2.jpeg">
+                            <small class="text-muted">Contoh: Art1.jpeg, Art2.jpeg, Art3.jpeg</small>
+                            <small class="text-danger" id="imagesError"></small>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-primary" id="saveProductBtn">Simpan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Konfirmasi Hapus</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Apakah Anda yakin ingin menghapus produk <strong id="deleteProductName"></strong>?</p>
+                    <p class="text-muted small">Tindakan ini tidak dapat dibatalkan.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Hapus</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const ITEMS_PER_PAGE = 10;
+        let currentPage = 1;
+        let allProducts = [];
+        let deleteProductId = null;
+        let isEditMode = false;
+
+        $(document).ready(function () {
+            checkAuthentication();
+            loadProducts();
+            setupEventListeners();
+        });
+
+        function checkAuthentication() {
+            $.ajax({
+                url: '../api/auth.php?action=check',
+                type: 'GET',
+                success: function (response) {
+                    if (response.authenticated) {
+                        $('#userDisplay').text('Halo, ' + response.data.username);
+                    } else {
+                        window.location.href = 'login.html';
+                    }
+                },
+                error: function () {
+                    window.location.href = 'login.html';
+                }
+            });
+        }
+
+        function setupEventListeners() {
+            $('#addProductBtn').on('click', openAddProductModal);
+            $('#saveProductBtn').on('click', saveProduct);
+            $('#logoutBtn').on('click', logout);
+            $('#confirmDeleteBtn').on('click', confirmDelete);
+
+            // Event delegation for edit button
+            $(document).on('click', '.btn-edit', function () {
+                const productId = $(this).data('product-id');
+                console.log('Edit button clicked for product:', productId);
+                openEditProductModal(productId);
+            });
+
+            // Event delegation for delete button
+            $(document).on('click', '.btn-delete', function () {
+                const productId = $(this).data('product-id');
+                const productName = $(this).data('product-name');
+                console.log('Delete button clicked for product:', productId, productName);
+                openDeleteModal(productId, productName);
+            });
+        }
+
+        function loadProducts() {
+            $.ajax({
+                url: '../api/products.php',
+                type: 'GET',
+                success: function (response) {
+                    if (response.success) {
+                        allProducts = response.data;
+                        displayProducts();
+                    }
+                },
+                error: function () {
+                    showError('Gagal memuat produk');
+                },
+                complete: function () {
+                    $('#loadingSpinner').hide();
+                }
+            });
+        }
+
+        function displayProducts() {
+            if (allProducts.length === 0) {
+                $('#emptyState').show();
+                $('#productsTable').hide();
+                $('#paginationNav').hide();
+                return;
+            }
+
+            $('#emptyState').hide();
+            $('#productsTable').show();
+
+            const totalPages = Math.ceil(allProducts.length / ITEMS_PER_PAGE);
+            const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+            const endIndex = startIndex + ITEMS_PER_PAGE;
+            const pageProducts = allProducts.slice(startIndex, endIndex);
+
+            const tbody = $('#productsTableBody');
+            tbody.empty();
+
+            pageProducts.forEach(product => {
+                const imageUrl = product.images && product.images.length > 0
+                    ? `../assets/img/${product.images[0]}`
+                    : 'https://via.placeholder.com/50';
+
+                const row = `
+          <tr>
+            <td>${product.id}</td>
+            <td><img src="${imageUrl}" alt="${product.name}" class="product-image" onerror="this.src='https://via.placeholder.com/50'"></td>
+            <td>${product.name}</td>
+            <td>${product.price}</td>
+            <td>${product.description.substring(0, 50)}...</td>
+            <td>
+              <div class="action-buttons">
+                <button class="btn-edit btn-sm" data-product-id="${product.id}">
+                  <i class="fas fa-edit"></i> Edit
+                </button>
+                <button class="btn-delete btn-sm" data-product-id="${product.id}" data-product-name="${product.name}">
+                  <i class="fas fa-trash"></i> Hapus
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+                tbody.append(row);
+            });
+
+            // Display pagination
+            if (totalPages > 1) {
+                displayPagination(totalPages);
+                $('#paginationNav').show();
+            } else {
+                $('#paginationNav').hide();
+            }
+        }
+
+        function displayPagination(totalPages) {
+            const paginationList = $('#paginationList');
+            paginationList.empty();
+
+            // Previous button
+            if (currentPage > 1) {
+                paginationList.append(`
+          <li class="page-item">
+            <a class="page-link" href="#" onclick="goToPage(${currentPage - 1}); return false;">Sebelumnya</a>
+          </li>
+        `);
+            }
+
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                const active = i === currentPage ? 'active' : '';
+                paginationList.append(`
+          <li class="page-item ${active}">
+            <a class="page-link" href="#" onclick="goToPage(${i}); return false;">${i}</a>
+          </li>
+        `);
+            }
+
+            // Next button
+            if (currentPage < totalPages) {
+                paginationList.append(`
+          <li class="page-item">
+            <a class="page-link" href="#" onclick="goToPage(${currentPage + 1}); return false;">Berikutnya</a>
+          </li>
+        `);
+            }
+        }
+
+        function goToPage(page) {
+            currentPage = page;
+            displayProducts();
+            window.scrollTo(0, 0);
+        }
+
+        function openAddProductModal() {
+            isEditMode = false;
+            $('#productModalTitle').text('Tambah Produk');
+            $('#productForm')[0].reset();
+            $('#productId').val('');
+            clearFormErrors();
+            new bootstrap.Modal(document.getElementById('productModal')).show();
+        }
+
+        function openEditProductModal(productId) {
+            console.log('Opening edit modal for product:', productId);
+            console.log('All products:', allProducts);
+
+            // Convert to number for comparison
+            const id = parseInt(productId);
+            const product = allProducts.find(p => parseInt(p.id) === id);
+
+            console.log('Found product:', product);
+
+            if (!product) {
+                console.error('Product not found');
+                return;
+            }
+
+            isEditMode = true;
+            $('#productModalTitle').text('Edit Produk');
+            $('#productId').val(product.id);
+            $('#productName').val(product.name);
+            $('#productPrice').val(product.price);
+            $('#productDescription').val(product.description);
+            $('#productMaterial').val(product.material || '');
+            $('#productAccessories').val(product.accessories || '');
+            $('#productColors').val(product.colors || '');
+            $('#productSizes').val(product.sizes || '');
+            $('#productImages').val(product.images ? product.images.join(', ') : '');
+            clearFormErrors();
+
+            console.log('Modal should open now');
+            new bootstrap.Modal(document.getElementById('productModal')).show();
+        }
+
+        function saveProduct() {
+            clearFormErrors();
+            const productId = $('#productId').val();
+            const imageFiles = document.getElementById('productImageFile').files;
+            const existingImages = $('#productImages').val().trim().split(',').map(img => img.trim()).filter(img => img);
+
+            // If files are selected, upload them first
+            if (imageFiles.length > 0) {
+                uploadImages(imageFiles, function (uploadedImages) {
+                    const allImages = [...uploadedImages, ...existingImages];
+                    const formData = {
+                        name: $('#productName').val().trim(),
+                        price: $('#productPrice').val().trim(),
+                        description: $('#productDescription').val().trim(),
+                        material: $('#productMaterial').val().trim(),
+                        accessories: $('#productAccessories').val().trim(),
+                        colors: $('#productColors').val().trim(),
+                        sizes: $('#productSizes').val().trim(),
+                        images: allImages
+                    };
+
+                    if (productId) {
+                        formData.id = productId;
+                        updateProduct(formData);
+                    } else {
+                        createProduct(formData);
+                    }
+                });
+            } else {
+                // No files selected, use existing images
+                const formData = {
+                    name: $('#productName').val().trim(),
+                    price: $('#productPrice').val().trim(),
+                    description: $('#productDescription').val().trim(),
+                    material: $('#productMaterial').val().trim(),
+                    accessories: $('#productAccessories').val().trim(),
+                    colors: $('#productColors').val().trim(),
+                    sizes: $('#productSizes').val().trim(),
+                    images: existingImages
+                };
+
+                if (productId) {
+                    formData.id = productId;
+                    updateProduct(formData);
+                } else {
+                    createProduct(formData);
+                }
+            }
+        }
+
+        function uploadImages(files, callback) {
+            const uploadedImages = [];
+            let uploadedCount = 0;
+
+            Array.from(files).forEach((file, index) => {
+                const formData = new FormData();
+                formData.append('file', file);
+
+                $.ajax({
+                    url: '../api/upload.php',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        if (response.success) {
+                            uploadedImages.push(response.filename);
+                        }
+                        uploadedCount++;
+                        if (uploadedCount === files.length) {
+                            callback(uploadedImages);
+                        }
+                    },
+                    error: function () {
+                        uploadedCount++;
+                        if (uploadedCount === files.length) {
+                            callback(uploadedImages);
+                        }
+                    }
+                });
+            });
+        }
+
+        function createProduct(data) {
+            $.ajax({
+                url: '../api/products.php',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                success: function (response) {
+                    if (response.success) {
+                        bootstrap.Modal.getInstance(document.getElementById('productModal')).hide();
+                        showSuccess('Produk berhasil ditambahkan');
+                        loadProducts();
+                    } else {
+                        displayFormErrors(response.errors);
+                    }
+                },
+                error: function (xhr) {
+                    const response = xhr.responseJSON;
+                    if (response && response.errors) {
+                        displayFormErrors(response.errors);
+                    } else {
+                        showError('Gagal menambahkan produk');
+                    }
+                }
+            });
+        }
+
+        function updateProduct(data) {
+            console.log('Updating product with data:', data);
+
+            $.ajax({
+                url: '../api/products.php',
+                type: 'PUT',
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                success: function (response) {
+                    console.log('Update response:', response);
+                    if (response.success) {
+                        bootstrap.Modal.getInstance(document.getElementById('productModal')).hide();
+                        showSuccess('Produk berhasil diperbarui');
+                        loadProducts();
+                    } else {
+                        console.error('Update failed:', response.errors);
+                        displayFormErrors(response.errors);
+                    }
+                },
+                error: function (xhr) {
+                    console.error('Update error:', xhr);
+                    const response = xhr.responseJSON;
+                    if (response && response.errors) {
+                        displayFormErrors(response.errors);
+                    } else {
+                        showError('Gagal memperbarui produk: ' + (xhr.responseText || 'Unknown error'));
+                    }
+                }
+            });
+        }
+
+        function openDeleteModal(productId, productName) {
+            deleteProductId = productId;
+            $('#deleteProductName').text(productName);
+            new bootstrap.Modal(document.getElementById('deleteModal')).show();
+        }
+
+        function confirmDelete() {
+            if (!deleteProductId) return;
+
+            $.ajax({
+                url: `../api/products.php?id=${deleteProductId}`,
+                type: 'DELETE',
+                success: function (response) {
+                    if (response.success) {
+                        bootstrap.Modal.getInstance(document.getElementById('deleteModal')).hide();
+                        showSuccess('Produk berhasil dihapus');
+                        loadProducts();
+                    } else {
+                        showError('Gagal menghapus produk');
+                    }
+                },
+                error: function () {
+                    showError('Gagal menghapus produk');
+                }
+            });
+        }
+
+        function displayFormErrors(errors) {
+            if (errors.name) $('#nameError').text(errors.name);
+            if (errors.price) $('#priceError').text(errors.price);
+            if (errors.description) $('#descriptionError').text(errors.description);
+            if (errors.images) $('#imagesError').text(errors.images);
+        }
+
+        function clearFormErrors() {
+            $('#nameError, #priceError, #descriptionError, #imagesError').text('');
+        }
+
+        function showSuccess(message) {
+            $('#successMessage').text(message);
+            $('#successAlert').show();
+            setTimeout(() => $('#successAlert').fadeOut(), 3000);
+        }
+
+        function showError(message) {
+            $('#errorMessage').text(message);
+            $('#errorAlert').show();
+            setTimeout(() => $('#errorAlert').fadeOut(), 3000);
+        }
+
+        function logout() {
+            $.ajax({
+                url: '../api/auth.php?action=logout',
+                type: 'POST',
+                success: function () {
+                    window.location.href = 'login.html';
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

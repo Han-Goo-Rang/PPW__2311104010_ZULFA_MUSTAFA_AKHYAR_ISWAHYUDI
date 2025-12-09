@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Unwritten</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/app.css">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 1rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-header h1 {
+            color: #e75480;
+            font-weight: bold;
+            font-size: 2rem;
+        }
+
+        .login-header p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            border: 2px solid #e0e0e0;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            transition: 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: #e75480;
+            box-shadow: 0 0 0 0.2rem rgba(231, 84, 128, 0.25);
+        }
+
+        .btn-login {
+            background-color: #e75480;
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .btn-login:hover {
+            background-color: #d64570;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(231, 84, 128, 0.4);
+            color: white;
+        }
+
+        .alert {
+            border-radius: 0.5rem;
+            border: none;
+        }
+
+        .loading {
+            display: none;
+        }
+
+        .spinner-border {
+            width: 1rem;
+            height: 1rem;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-card p-5">
+            <div class="login-header">
+                <h1>Unwritten</h1>
+                <p>Admin Dashboard</p>
+            </div>
+
+            <div id="errorAlert" class="alert alert-danger alert-dismissible fade show" role="alert"
+                style="display: none;">
+                <strong>Error!</strong> <span id="errorMessage"></span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+
+            <form id="loginForm">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username"
+                        placeholder="Masukkan username" required>
+                    <small class="text-danger" id="usernameError"></small>
+                </div>
+
+                <div class="mb-4">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password"
+                        placeholder="Masukkan password" required>
+                    <small class="text-danger" id="passwordError"></small>
+                </div>
+
+                <button type="submit" class="btn-login" id="loginBtn">
+                    <span class="loading">
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Loading...
+                    </span>
+                    <span class="login-text">Login</span>
+                </button>
+            </form>
+
+            <div class="mt-4 text-center text-muted small">
+                <p>Demo Credentials:</p>
+                <p>Username: <strong>admin</strong></p>
+                <p>Password: <strong>admin123</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Check if already logged in
+            checkAuthentication();
+
+            // Handle form submission
+            $('#loginForm').on('submit', function (e) {
+                e.preventDefault();
+                handleLogin();
+            });
+
+            // Clear error messages on input
+            $('#username, #password').on('input', function () {
+                $(this).siblings('small').text('');
+                $('#errorAlert').hide();
+            });
+        });
+
+        function checkAuthentication() {
+            $.ajax({
+                url: '../api/auth.php?action=check',
+                type: 'GET',
+                success: function (response) {
+                    if (response.authenticated) {
+                        window.location.href = 'dashboard.html';
+                    }
+                }
+            });
+        }
+
+        function handleLogin() {
+            const username = $('#username').val().trim();
+            const password = $('#password').val().trim();
+
+            // Clear previous errors
+            $('#usernameError').text('');
+            $('#passwordError').text('');
+            $('#errorAlert').hide();
+
+            // Validate input
+            let hasError = false;
+            if (!username) {
+                $('#usernameError').text('Username tidak boleh kosong');
+                hasError = true;
+            }
+            if (!password) {
+                $('#passwordError').text('Password tidak boleh kosong');
+                hasError = true;
+            }
+
+            if (hasError) return;
+
+            // Show loading state
+            $('#loginBtn').prop('disabled', true);
+            $('#loginBtn .loading').show();
+            $('#loginBtn .login-text').hide();
+
+            // Send login request
+            $.ajax({
+                url: '../api/auth.php?action=login',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    username: username,
+                    password: password
+                }),
+                success: function (response) {
+                    if (response.success) {
+                        // Redirect to dashboard
+                        window.location.href = 'dashboard.html';
+                    } else {
+                        showError(response.message);
+                    }
+                },
+                error: function (xhr) {
+                    const response = xhr.responseJSON;
+                    if (response && response.errors) {
+                        if (response.errors.username) {
+                            $('#usernameError').text(response.errors.username);
+                        }
+                        if (response.errors.password) {
+                            $('#passwordError').text(response.errors.password);
+                        }
+                    }
+                    showError(response?.message || 'Login gagal. Silakan coba lagi.');
+                },
+                complete: function () {
+                    // Hide loading state
+                    $('#loginBtn').prop('disabled', false);
+                    $('#loginBtn .loading').hide();
+                    $('#loginBtn .login-text').show();
+                }
+            });
+        }
+
+        function showError(message) {
+            $('#errorMessage').text(message);
+            $('#errorAlert').show();
+        }
+    </script>
+</body>
+
+</html>

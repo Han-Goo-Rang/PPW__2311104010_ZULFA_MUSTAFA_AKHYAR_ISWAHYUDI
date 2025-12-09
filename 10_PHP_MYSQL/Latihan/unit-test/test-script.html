@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Test Script</title>
+</head>
+
+<body>
+    <h1>Test Script Loading</h1>
+    <p id="result">Loading...</p>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="assets/api-client.js"></script>
+    <script>
+        console.log("Before script tag");
+    </script>
+    <script src="assets/script.js"></script>
+    <script>
+        console.log("After script tag");
+        console.log("typeof loadProductsFromAPI:", typeof loadProductsFromAPI);
+        document.getElementById('result').textContent = 'typeof loadProductsFromAPI: ' + typeof loadProductsFromAPI;
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /api/
+    
+    # Allow direct access to files
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    
+    # Redirect all requests to the appropriate PHP file
+    RewriteRule ^products$ products.php [QSA,L]
+    RewriteRule ^auth$ auth.php [QSA,L]
+</IfModule>

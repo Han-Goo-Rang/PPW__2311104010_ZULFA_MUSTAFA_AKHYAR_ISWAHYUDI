@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /admin/
+    
+    # Redirect to login if not authenticated
+    # This is handled by JavaScript, but we can add server-side checks here if needed
+</IfModule>

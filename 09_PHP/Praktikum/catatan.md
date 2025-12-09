@@ -1,0 +1,1 @@
+Kita asinkronus. Jadi tidak ada yang perlu dicatat.

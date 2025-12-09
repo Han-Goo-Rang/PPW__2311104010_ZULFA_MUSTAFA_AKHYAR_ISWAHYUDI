@@ -1,0 +1,190 @@
+:root {
+  --custom-pink: #e75480;
+  --custom-pink-hover: #d64570;
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.3);
+}
+
+main.container {
+  max-width: 1100px;
+}
+
+/* === Banner Carousel === */
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 0.75rem;
+  padding: 1rem 1.5rem;
+  backdrop-filter: blur(6px);
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* === Carousel Banner (khusus index.html) === */
+#bannerCarousel .carousel-item img {
+  height: 300px;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* === Carousel Produk (detail.html) === */
+#productCarousel .carousel-item img {
+  width: 100%;
+  height: auto;
+  max-height: 550px;
+  object-fit: contain;
+  object-position: center;
+  background-color: #fff;
+  border-radius: 0.75rem;
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* === Umum === */
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  background-color: #f8f9fa;
+}
+
+/* === Efek Glass === */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+/* === Banner === */
+.banner-image {
+  object-fit: cover;
+  object-position: center;
+}
+.banner-overlay {
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: brightness(0.7);
+}
+
+/* === Tombol Kustom === */
+.btn-custom-pink {
+  background-color: var(--custom-pink);
+  color: #fff;
+  border: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-custom-pink:hover,
+.btn-custom-pink:focus {
+  background-color: var(--custom-pink-hover);
+  color: #fff;
+  transform: scale(1.03);
+}
+
+.btn-custom-pink:active {
+  transform: scale(0.97);
+}
+
+/* === Card Produk === */
+.product-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.product-card img {
+  height: 220px;
+  object-fit: cover;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+/* === Card Rekomendasi === */
+aside .glass {
+  background: rgba(255, 255, 255, 0.85);
+}
+aside .btn-custom-pink {
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+/* === Warna Teks === */
+.text-custom-pink {
+  color: var(--custom-pink) !important;
+}
+
+/* === Input Pencarian === */
+#searchInput {
+  border: 2px solid var(--custom-pink);
+  border-radius: 0.5rem;
+  padding: 0.6rem 1rem;
+  transition: 0.2s;
+}
+#searchInput:focus {
+  border-color: var(--custom-pink-hover);
+  box-shadow: 0 0 0 0.2rem rgba(231, 84, 128, 0.25);
+}
+
+/* === Tombol Back-to-Top === */
+#toTopBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-weight: bold;
+  line-height: 28px;
+  text-align: center;
+  padding: 0;
+}
+
+/* === Halaman Detail === */
+#detailActionBar {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+#detailActionBar .btn {
+  padding: 0.6rem 1.2rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+}
+
+.glass.shadow-sm {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+#recommendations .card img {
+  height: 180px;
+  object-fit: cover;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+/* === Responsiveness === */
+@media (max-width: 991px) {
+  aside {
+    order: -1;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .row.align-items-start {
+    flex-direction: column;
+  }
+  #productCarousel {
+    margin-bottom: 1.5rem;
+  }
+  #detailActionBar {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 575px) {
+  .product-card img {
+    height: 180px;
+  }
+}
